@@ -1,4 +1,30 @@
 Phil:
+Agile Prozesse: Agile Prozesse zeichnen sich durch eine schrittweise Erfassung der 
+Kundenwünsche aus. Sie sind so konzipiert, dass auch dessen spät veränderte Anforderungen 
+rasch in die Entwicklung der Software einbezogen werden. Dies wird vor allem durch kurze 
+Iterationszyklen und regelmässige Erstellung von Inkrementen erreicht.
+
+Plangesteuerte Prozesse: Plangesteuerte Prozesse sind durch ihre möglichst präzise, 
+frühe Erfassung der meisten Kundenanforderungen gekennzeichnet. Mit deren Hilfe wird ein Plan 
+erstellt, der den zeitlichen Ablauf des Projekts, die Tests sowie die zu erstellende Dokumentation 
+beschreibt.
+
+Pro Agile Prozesse:
+- für kleinere Teams (schnell zu unübersichtlich)
+- das Ziel ist relativ breit gefächert
+- die Dokumentation während des Projektes erfolgt eher frei
+
+Pro Plangesteuerte Prozesse:
+- Klare Anforderungsliste
+- Für jeden Verständlich
+- Frühes erkennen von Defiziten
+
+Kontra Agile Prozesse:
+- nicht beachteten Nebenbedingungen könnten ein Problem ergeben
+
+Kontra Plangesteuerte Prozesse:
+- bei Änderungen könnte ein grosser Aktualisierungs- und Anpassungsaufwand entstehen
+
 
 Ghazal:
 Agile:
