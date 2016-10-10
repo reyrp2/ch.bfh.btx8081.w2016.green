@@ -1,29 +1,29 @@
 Phil:
-Agile Prozesse: Agile Prozesse zeichnen sich durch eine schrittweise Erfassung der 
-Kundenw�nsche aus. Sie sind so konzipiert, dass auch dessen sp�t ver�nderte Anforderungen 
-rasch in die Entwicklung der Software einbezogen werden. Dies wird vor allem durch kurze 
-Iterationszyklen und regelm�ssige Erstellung von Inkrementen erreicht.
+Agile processes: Agile processes are defined by implementing step by step the customer
+requirements. They are designed so that, if something changes later it can be fast
+implemented in the development of the software. This is achieved by short iteration
+cycles and constant creation of increments. 
 
-Plangesteuerte Prozesse: Plangesteuerte Prozesse sind durch ihre m�glichst pr�zise, 
-fr�he Erfassung der meisten Kundenanforderungen gekennzeichnet. Mit deren Hilfe wird ein Plan 
-erstellt, der den zeitlichen Ablauf des Projekts, die Tests sowie die zu erstellende Dokumentation 
-beschreibt.
+Plan-driven processes: Plan-driven processes defined by determine the customers requirements
+early in the process an as precise as possible. With the precise requirements of the customer, 
+the plan is established, the timeline for the project is set, tests for the software and the 
+required documentation can be prepared.
 
-Pro Agile Prozesse:
-- f�r kleinere Teams (schnell zu un�bersichtlich)
-- das Ziel ist relativ breit gef�chert
-- die Dokumentation w�hrend des Projektes erfolgt eher frei
+Pro agile processes:
+- for small teams (can fast get unclear)
+- the goal has a wide variety
+- the documentation during the projects is done freely
 
-Pro Plangesteuerte Prozesse:
-- Klare Anforderungsliste
-- F�r jeden Verst�ndlich
-- Fr�hes erkennen von Defiziten
+Pro plan-driven processes:
+- clear list if requirements
+- for everyone comprehensible
+- early recognition of shortfalls
 
-Kontra Agile Prozesse:
-- nicht beachteten Nebenbedingungen k�nnten ein Problem ergeben
+Contra agile processes:
+- not considering additional condition can lead to problems
 
-Kontra Plangesteuerte Prozesse:
-- bei �nderungen k�nnte ein grosser Aktualisierungs- und Anpassungsaufwand entstehen
+contra plan-driven:
+- changes can lead to big additional effort to update and adapt
 
 
 Ghazal:
