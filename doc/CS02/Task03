@@ -18,7 +18,7 @@ Functional Requirements:
 	- Compare target measurements
 	- If level glucose is rising then insulin is injected to counteract this rise
 Non-Functional Requirements:
-
+	- inject insulin 2 or more times per day
 
 Domain Requirements
 	- Insulin is essential to metabolise sugar and hence generate energy
