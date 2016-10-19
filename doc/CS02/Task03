@@ -11,3 +11,16 @@ Notify them (doc/nurse) if there are big problems.
 
 
 Ghazal & Fatima:
+
+
+Functional Requirements:
+	- Should regularly measure distances
+	- Compare target measurements
+	- If level glucose is rising then insulin is injected to counteract this rise
+Non-Functional Requirements:
+
+
+Domain Requirements
+	- Insulin is essential to metabolise sugar and hence generate energy
+	- Most diabetics inject insulin 2 or more times per day
+	- On-demand insulin production of the pancreas
