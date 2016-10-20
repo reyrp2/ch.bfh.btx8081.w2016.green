@@ -2,7 +2,7 @@ Pero & Phil:
 The patient expects that the device measures his blood sugar level with the sensor and show it on the display. 
 After measuring, the pump injects the insulin based on the level. 
 
-The engineer expects that the device notifies the patient about the low battary status or the almost emoty insulin pump. 
+The engineer expects that the device notifies the patient about the low battery status or the almost empty insulin pump. 
 So that the patient can make an appointment in time. 
 
 Doctor/ Nurse expects that the device delivers useful and correct informations about the blood sugar level of the patient.
