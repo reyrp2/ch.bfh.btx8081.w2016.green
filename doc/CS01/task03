@@ -1,6 +1,13 @@
 CS01 Task3: Design Thinking (1)
 
 1. Scoping:
+This app should support people who want to quit smoking.
+Every person who can handle a smartphone or PC should be
+able to interact with this app. 
+Out of our scope is to prevent that people start smoking again.
+This app should only help to stop or reduce smoking.
+Our target users are smoker. This means that the app only supports
+smokers and not drug addicts or alcoholics.
 
 2. Research:
 We will do 3 interviews and a survey for more information
@@ -15,16 +22,38 @@ Our interview partners will also serve as target users.
 CS01 Task3: Design Thinking (2)
 
 4. Design:
-Each of our group has done two storyboards. 
-We choosed three of them for our presentation.
+Each member of our group has drawn two storyboards. 
+We have chosen three of them for our presentation.
 Watch the documents "soryboard_name.pdf" for the storyboards of all team members.
 
 5. Prototype:
-Each of our group has done one prototype based on his own storyboard. 
+Each member of our group has created one prototype based on his own storyboard. 
 We collected the best ideas of all prototype to create the "final" one.
 Watch the documents "prototype_name.pdf" for the prototypes of all team members.
 
 6. Validate:
+
+We have asked our friends and family which is the most common situation where
+they would smoke. Most of the people described 3 scenarios which we covered 
+with our storyboards. Also the people, who we interviewed described almost the same
+situations. Out of the storyboards we created several prototypes.
+For testing the prototypes we just hand it out to the people and let time to discover
+the app. After about two to three minutes most of the people to understood how the
+app works. There were some questions about small details.
+
+Validation questions: 
+Does the app help to reduce smoking?
+Is the app easy to understand?
+Does the app help to stop smoking?
+Is the app easy to use?
+
+For the first and third question we can get an answer when the app is programmed 
+and ready to use. With the feedback from the users we can answer this question.
+The second and fourth question can be answered with the stoyboards and with the
+prototypes. When we test our prototypes with people, we can get fast feedback and
+see which parts of the app are to complicated. Also we can see how the people intuitive
+interact with the app.
+
 
 
 CS01 Task3: Design Thinking (3)
