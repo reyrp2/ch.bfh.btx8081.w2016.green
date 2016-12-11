@@ -20,74 +20,54 @@ public class Person {
 	 */
 	public Person(String name, String FirstName, Date BirthDate, String userName, String password, int howLongSmoking) {
 	}
-
-	/**
-	 * Name getter
+	/** Name getter
 	 */
 	private String getName() {
 		return name;
 	}
-
-	/**
-	 * Name setter
+/** Name setter
 	 */
 	private void setName(String name) {
 		this.name = name;
 	}
-
-	/**
-	 * FirstName getter
+/** FirstName getter
 	 */
 	private String getFristName() {
 		return FirstName;
 	}
-
-	/**
-	 * FirstName setter
+/** FirstName setter
 	 */
 	private void setFirstName(String FirstName) {
 		this.FirstName = FirstName;
 	}
-
-	/**
-	 * BirthDate getter
+/** BirthDate getter
 	 */
 	private Date getBirthDate() {
 		return BirthDate;
 	}
-
-	/**
-	 * BirthDate setter
+/** BirthDate setter
 	 */
 	private void setBirthDate(Date BirthDate) {
 		this.BirthDate = BirthDate;
 	}
-
-	/**
-	 * userName getter
+/** userName getter
 	 */
 	private String getUserName() {
 		return userName;
 	}
-
-	/**
-	 * userName setter
+/** userName setter
 	 */
 	private void setUserName(String userName) {
 		this.userName = userName;
 	}
-
-	/**
-	 * smockig experience duration getter
+/** smockig experience duration getter
 	 */
 	public int getHowLongSmocking() {
 		return howLongSmocking;
 	}
-
-	/**
-	 * smocking experience duration setter
+/** smocking experience duration setter
 	 */
-	public void setHowLongSmocking() {
+	public void setHowLongSmocking(int howLongSmocking) {
 		this.howLongSmocking = howLongSmocking;
 	}
 }
