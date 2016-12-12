@@ -60,7 +60,7 @@ public class Person_class {
 	private void setUserName(String userName) {
 		this.userName = userName;
 	}
-/** smockig experience duration getter
+/** smocking experience duration getter
 	 */
 	public int getHowLongSmocking() {
 		return howLongSmocking;
