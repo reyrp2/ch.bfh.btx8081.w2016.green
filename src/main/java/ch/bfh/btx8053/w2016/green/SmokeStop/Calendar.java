@@ -1,3 +1,5 @@
+package ch.bfh.btx8053.w2016.green.SmokeStop;
+
 /*
  * Represents a Calendar for a Smokestop App for user
  */
