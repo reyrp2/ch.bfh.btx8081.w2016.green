@@ -2,7 +2,7 @@ package ch.bfh.btx8053.w2016.green.SmokeStop;
 
 /*
  * Represents the Calendar in the SmokeStop App
- * The user can see every day, how many goal he does
+ * The user can see every day, how many goal he did
  */
 public class Calendar {
 	public final int day, month, year;
