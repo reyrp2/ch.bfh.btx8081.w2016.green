@@ -10,9 +10,7 @@ public class CashRegister {
 	this.amount = amount;
 	}
 	
-	/*
-	 * 
-	 */
+	
 	private void Saved(int x){
 		this.x = x;
 	}
@@ -23,11 +21,7 @@ public class CashRegister {
 	private int getSaved(){
 	return x;
 	}
-	
-	/*
-	 * 
-	 */
-	
+
 	private void Counter(int y){
 		this.y = y;
 	}
@@ -35,6 +29,7 @@ public class CashRegister {
 	/*
 	 * Returns the Counter values
 	 */
+	
 	private int getCounter(){
 	return y;
 	}
