@@ -1,7 +1,8 @@
 package ch.bfh.btx8053.w2016.green.SmokeStop;
 
 /*
- * Represents a Calendar for a Smokestop App for user
+ * Represents the Calendar in the SmokeStop App
+ * The user can see every day, how many goal he does
  */
 public class Calendar {
 	public final int day, month, year;
@@ -32,10 +33,18 @@ public class Calendar {
 		month = Integer.parseInt(aDate.substring(3,5));
 		year = Integer.parseInt(aDate.substring(6,10));
 	}
+	
+/*
+ * daily goals
+ */
 	public void setGoal(String s){
 	this.s = s; 
 	}
 	
+
+/*
+ * Specifies daily goals
+ */
 	public void setDailyGoal(int i){
 	this.i = i;
 	}
