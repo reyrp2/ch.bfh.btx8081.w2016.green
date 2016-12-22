@@ -11,14 +11,14 @@ public class CashRegister {
 	}
 	
 	/*
-	 * 
+	 * Returns the stored values
 	 */
 	public int getSaved(){
 	return x;
 	}
 	
 	/*
-	 * 
+	 * Returns the Counter values
 	 */
 	public int getCounter(){
 	return y;
