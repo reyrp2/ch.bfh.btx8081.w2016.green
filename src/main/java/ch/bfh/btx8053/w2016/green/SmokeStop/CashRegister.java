@@ -1,3 +1,5 @@
+package ch.bfh.btx8053.w2016.green.SmokeStop;
+
 
 public class CashRegister {
 
