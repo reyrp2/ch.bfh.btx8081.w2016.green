@@ -1,52 +1,43 @@
 package ch.bfh.btx8053.w2016.green.SmokeStop;
 
-import javax.servlet.annotation.WebServlet;
-
-import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.VaadinServletConfiguration;
-import com.vaadin.server.ExternalResource;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.ThemeResource;
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinServlet;
-import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.MenuBar;
-import com.vaadin.ui.MenuBar.MenuItem;
-import com.vaadin.ui.themes.ValoTheme;
-import com.vaadin.ui.TabSheet;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Window;
+import com.vaadin.ui.themes.ValoTheme;
 
-/**
- * This UI is the application entry point. A UI may either represent a browser window 
- * (or tab) or some part of a html page where a Vaadin application is embedded.
- * <p>
- * The UI is initialized using {@link #init(VaadinRequest)}. This method is intended to be 
- * overridden to add component to the user interface and initialize non-component functionality.
- */
-@Theme("mytheme")
-public class MotivatorUI extends UI { //standard Vaadin code
+public class MotivatorUI extends VerticalLayout implements View {
 
-	@Override
-	protected void init(VaadinRequest vaadinRequest) { //standard Vaadin code
+	public MotivatorUI(){
+
 		final VerticalLayout layout = new VerticalLayout(); //Main layout
 
 		//head bar    	
 		final HorizontalLayout hLayout1 = new HorizontalLayout();
 
 		final CssLayout hLayoutIcons = new CssLayout(); 
-		hLayoutIcons.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP); //
+		hLayoutIcons.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
 
 		final Button bCalendar = new Button(FontAwesome.CALENDAR);
+		bCalendar.addClickListener( e -> {
+			getUI().getNavigator().navigateTo(MainUI.CALENDAR);
+		});
 		final Button bPerson = new Button(FontAwesome.USER);
+		bPerson.addClickListener( e -> {
+			getUI().getNavigator().navigateTo(MainUI.PERSON);
+		});
 		final Button bMotivator = new Button(FontAwesome.BULLSEYE);
+		bMotivator.addClickListener( e -> {
+			getUI().getNavigator().navigateTo(MainUI.MOTIVATOR);
+		});
+
 		hLayoutIcons.addComponents(bCalendar, bPerson, bMotivator);
 
 		final Label lTitle = new Label("SmokeStop");
@@ -55,8 +46,8 @@ public class MotivatorUI extends UI { //standard Vaadin code
 		hLayout1.setSpacing(true);
 
 		//Motivation text and Picture
-		String imageDescription = new String("YOU CAN DO IT!!");
-		ThemeResource resource = new ThemeResource("images/im2.jpg");
+		String imageDescription = new String("YOU CAN DO IT!!");//text
+		ThemeResource resource = new ThemeResource("images/motivation.jpg");//picture
 		final Image motivationImage = new Image(imageDescription, resource);                   
 
 		//Saved money
@@ -69,13 +60,7 @@ public class MotivatorUI extends UI { //standard Vaadin code
 		final Label goalText = new Label();
 
 		final Button bAchieved = new Button("Goal achieved");
-		
-//		bAchieved.setImmediate(true);
-//		bAchieved.setWidth("500px");
-//		bAchieved.setHeight("500px");
-//		bAchieved.setStyleName("thumbs-down-button");
-		
-		
+
 		bAchieved.addClickListener( e -> {
 			layout.addComponent(new Label("You got it!"));
 		});
@@ -92,13 +77,11 @@ public class MotivatorUI extends UI { //standard Vaadin code
 		layout.addComponents(hLayout1, motivationImage, savedMoney, hLayoutButtons, goalText);
 		layout.setMargin(true);
 		layout.setSpacing(true);
-		setContent(layout);
-		
-		
+		addComponent(layout);
 	}
 
-	@WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true) //standard Vaadin code
-	@VaadinServletConfiguration(ui = MotivatorUI.class, productionMode = false) //standard Vaadin code
-	public static class MyUIServlet extends VaadinServlet { //standard Vaadin code
+	@Override
+	public void enter(ViewChangeEvent event) {
+		// TODO Auto-generated method stub
 	}
 }

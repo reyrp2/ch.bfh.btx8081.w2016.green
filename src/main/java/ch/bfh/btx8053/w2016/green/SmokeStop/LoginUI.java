@@ -1,56 +1,54 @@
 package ch.bfh.btx8053.w2016.green.SmokeStop;
 
-import javax.servlet.annotation.WebServlet;
-
 import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.ExternalResource;
 import com.vaadin.server.FontAwesome;
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Link;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
 @Theme("mytheme")
-public class LoginUI extends UI {
-    protected void init(VaadinRequest vaadinRequest) {
-        final VerticalLayout layout = new VerticalLayout();
-	
-	//head bar    	
-	final HorizontalLayout hLayout1 = new HorizontalLayout();
+public class LoginUI extends VerticalLayout implements View {
 
-	final CssLayout hLayoutIcons = new CssLayout(); 
-	hLayoutIcons.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP); //
+	public LoginUI(){
 
-	final Button bCalendar = new Button(FontAwesome.CALENDAR);
-	final Button bPerson = new Button(FontAwesome.USER);
-	final Button bMotivator = new Button(FontAwesome.BULLSEYE);
-	hLayoutIcons.addComponents(bCalendar, bPerson, bMotivator);
+		final VerticalLayout layout = new VerticalLayout();
 
-	final Label lTitle = new Label("SmokeStop");
+		//head bar    	
+		final HorizontalLayout hLayout1 = new HorizontalLayout();//löschen wenn nur ein Titel gebruacht wird
+		final Label lTitle = new Label("SmokeStop");
 
-	hLayout1.addComponents(hLayoutIcons, lTitle); 	
-	hLayout1.setSpacing(true);
-	
-    final TextField Benutzername = new TextField();
-    Benutzername.setCaption("Benutzername");
-    
-    final TextField Passwort = new TextField();
-    Passwort.setCaption("Passwort");
-	
-    layout.addComponents(hLayout1,Benutzername,Passwort);
-    layout.setMargin(true);
-    layout.setSpacing(true);
-    
-    setContent(layout);
-    }
-    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = LoginUI.class, productionMode = false)
-    public static class MyUIServlet extends VaadinServlet {
-    }
+		hLayout1.addComponents(lTitle); 	
+		hLayout1.setSpacing(true);
+
+		final TextField Benutzername = new TextField();
+		Benutzername.setCaption("Benutzername");
+
+		final TextField Passwort = new TextField();
+		Passwort.setCaption("Passwort");
+		
+		final Button loginButton = new Button("Login");
+		loginButton.addClickListener( e -> {
+			getUI().getNavigator().navigateTo(MainUI.PERSON);
+		});
+		
+		final Link createAccountLink = new Link ("Create new Account", new ExternalResource("localhost:8080/#!account")); //hyperlink to create account-screen
+
+		layout.addComponents(hLayout1,Benutzername,Passwort,loginButton,createAccountLink);
+		layout.setMargin(true);
+		layout.setSpacing(true);
+		addComponent(layout);
+	}
+
+	@Override
+	public void enter(ViewChangeEvent event) {
+		// TODO Auto-generated method stub
+	}
 }
