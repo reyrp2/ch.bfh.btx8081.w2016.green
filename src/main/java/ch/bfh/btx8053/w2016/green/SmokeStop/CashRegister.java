@@ -1,26 +1,41 @@
 
 public class CashRegister {
 
-	public int amount, x, y; 
+	private int amount, x, y; 
 
 	/*
 	 * Calculate the amount 
 	 */
-	public void calculateSaved(int amount){
+	private void calculateSaved(int amount){
 	this.amount = amount;
+	}
+	
+	/*
+	 * 
+	 */
+	private void Saved(int x){
+		this.x = x;
 	}
 	
 	/*
 	 * Returns the stored values
 	 */
-	public int getSaved(){
+	private int getSaved(){
 	return x;
+	}
+	
+	/*
+	 * 
+	 */
+	
+	private void Counter(int y){
+		this.y = y;
 	}
 	
 	/*
 	 * Returns the Counter values
 	 */
-	public int getCounter(){
+	private int getCounter(){
 	return y;
 	}
 
