@@ -34,7 +34,7 @@ import com.vaadin.ui.OptionGroup;
  * overridden to add component to the user interface and initialize non-component functionality.
  */
 @Theme("mytheme")
-public class Person extends UI {
+public class PersonUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -80,7 +80,7 @@ public class Person extends UI {
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = Person.class, productionMode = false)
+    @VaadinServletConfiguration(ui = PersonUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
     }
 }

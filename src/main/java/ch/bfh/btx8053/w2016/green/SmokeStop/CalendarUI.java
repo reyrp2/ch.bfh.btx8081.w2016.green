@@ -22,7 +22,7 @@ import com.vaadin.ui.components.calendar.handler.BasicDateClickHandler;
 
 @SuppressWarnings("serial")
 @Theme("mytheme")
-public class calendarGui extends UI {
+public class CalendarUI extends UI {
 
 	@Override
 	protected void init(VaadinRequest vaadinRequest) {
@@ -135,7 +135,7 @@ public class calendarGui extends UI {
 	}
 
 	@WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-	@VaadinServletConfiguration(ui = calendarGui.class, productionMode = false)
+	@VaadinServletConfiguration(ui = CalendarUI.class, productionMode = false)
 	public static class MyUIServlet extends VaadinServlet {
 	}
 }

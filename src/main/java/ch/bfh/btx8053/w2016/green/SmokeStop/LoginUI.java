@@ -17,7 +17,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
 @Theme("mytheme")
-public class Login extends UI {
+public class LoginUI extends UI {
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
 	
@@ -50,7 +50,7 @@ public class Login extends UI {
     setContent(layout);
     }
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = Login.class, productionMode = false)
+    @VaadinServletConfiguration(ui = LoginUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
     }
 }
