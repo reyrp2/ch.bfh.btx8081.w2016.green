@@ -27,7 +27,7 @@ public class CashRegister {
 
 
 	/*
-	 * Returns the Counter of Cigarrettes smoked 
+	 * Return the Counter of Cigarrettes smoked 
 	 */
 	
 	private int getCounter(){
