@@ -1,4 +1,9 @@
+
 package ch.bfh.btx8053.w2016.green.SmokeStop;
+
+/*
+ * Returns the Counter values
+ */It save the amount of the money not invested on Cigarrette  
 
 
 public class CashRegister {
@@ -13,9 +18,6 @@ public class CashRegister {
 	}
 	
 	
-	private void Saved(int x){
-		this.x = x;
-	}
 	
 	/*
 	 * Returns the stored values
@@ -24,10 +26,7 @@ public class CashRegister {
 	return x;
 	}
 
-	private void Counter(int y){
-		this.y = y;
-	}
-	
+
 	/*
 	 * Returns the Counter values
 	 */
