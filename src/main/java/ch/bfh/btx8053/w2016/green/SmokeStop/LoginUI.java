@@ -11,6 +11,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
@@ -31,7 +32,7 @@ public class LoginUI extends VerticalLayout implements View {
 		final TextField Benutzername = new TextField();
 		Benutzername.setCaption("Benutzername");
 
-		final TextField Passwort = new TextField();
+		final PasswordField Passwort = new PasswordField();
 		Passwort.setCaption("Passwort");
 		
 		final Button loginButton = new Button("Login");
