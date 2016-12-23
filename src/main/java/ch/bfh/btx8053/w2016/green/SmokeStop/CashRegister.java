@@ -10,7 +10,7 @@ public class CashRegister {
 	private int amount, x, y; 
 
 	/*
-	 * Calculate the amount 
+	 * Calculate the amoun 
 	 */
 	private void calculateSaved(int amount){
 	this.amount = amount;
