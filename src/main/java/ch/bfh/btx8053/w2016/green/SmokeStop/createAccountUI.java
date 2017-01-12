@@ -45,8 +45,12 @@ public class createAccountUI extends UI implements View {
 			getUI().getNavigator().navigateTo(MainUI.PERSON);//connect to person class
 		});
 
-		final Link loginLink = new Link ("Back to Login", new ExternalResource("http://localhost:8080")); //hyperlink to login-screen
-
+		final Button loginLink = new Button("Back to Login");
+		loginLink.setStyleName("link");
+		loginLink.addClickListener( e -> {
+			getUI().getNavigator().navigateTo(MainUI.LOGIN);
+		});//funktioniert nicht!!!
+		
 		layout.addComponents(newAccount, fieldName, fieldFirstName, fieldMail, fieldPW, fieldPWAgain, createAccount, loginLink);
 		layout.setSizeUndefined();
 		//layout.setSizeFull(); //Layout passt sich der Bildschirmgrösse an

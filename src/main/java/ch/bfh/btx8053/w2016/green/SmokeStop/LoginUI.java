@@ -5,6 +5,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.FontAwesome;
+import com.vaadin.server.Resource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -40,8 +41,13 @@ public class LoginUI extends VerticalLayout implements View {
 			getUI().getNavigator().navigateTo(MainUI.PERSON);
 		});
 		
-		final Link createAccountLink = new Link ("Create new Account", new ExternalResource("localhost:8080/#!account")); //hyperlink to create account-screen
-
+		final Button createAccountLink = new Button("Create new Account");
+		createAccountLink.setStyleName("link");
+		createAccountLink.addClickListener( e -> {
+			getUI().getNavigator().navigateTo(MainUI.ACCOUNT);
+		});
+		//funktioniert nicht!!!!
+		
 		layout.addComponents(hLayout1,Benutzername,Passwort,loginButton,createAccountLink);
 		layout.setMargin(true);
 		layout.setSpacing(true);

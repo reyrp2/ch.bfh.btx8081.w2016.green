@@ -46,7 +46,7 @@ public class CalendarUI extends VerticalLayout implements View {
 			getUI().getNavigator().navigateTo(MainUI.MOTIVATOR);
 		});
 		
-		hLayoutIcons.addComponents(bCalendar, bPerson, bMotivator);
+		hLayoutIcons.addComponents(bMotivator, bCalendar, bPerson);
 
 		final Label lTitle = new Label("SmokeStop");
 

@@ -38,7 +38,7 @@ public class MotivatorUI extends VerticalLayout implements View {
 			getUI().getNavigator().navigateTo(MainUI.MOTIVATOR);
 		});
 
-		hLayoutIcons.addComponents(bCalendar, bPerson, bMotivator);
+		hLayoutIcons.addComponents(bMotivator, bCalendar, bPerson);
 
 		final Label lTitle = new Label("SmokeStop");
 
@@ -62,12 +62,12 @@ public class MotivatorUI extends VerticalLayout implements View {
 		final Button bAchieved = new Button("Goal achieved");
 
 		bAchieved.addClickListener( e -> {
-			layout.addComponent(new Label("You got it!"));
+			layout.addComponent(new Label("Congratulation, you got it!"));
 		});
 
 		final Button bfaild = new Button("Goal faild");
 		bfaild.addClickListener( e -> {
-			layout.addComponent(new Label("You miss!"));
+			layout.addComponent(new Label("Damn, you miss! Don't give up"));
 		});
 
 		hLayoutButtons.addComponents(bAchieved, bfaild);

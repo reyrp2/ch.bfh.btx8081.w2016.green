@@ -23,7 +23,7 @@ import com.vaadin.ui.VerticalLayout;
 public class MainUI extends UI {
 
 	public Navigator navigator;
-
+	
 	//Views
 	public static final String LOGIN = "login";
 	public static final String ACCOUNT = "account";
