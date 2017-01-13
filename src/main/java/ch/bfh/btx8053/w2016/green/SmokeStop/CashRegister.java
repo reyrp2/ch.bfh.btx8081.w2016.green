@@ -1,38 +1,63 @@
-
-package ch.bfh.btx8053.w2016.green.SmokeStop;
-
-/*
- * This Class save the amount of the money not invested on Cigarrettes
+/**
+ * It is an CashRegister Class which calculates the saved money
+ * @author Team Green
+ *
  */
 
 public class CashRegister {
 
-	private int amount, x, y; 
-
-	/*
-	 * Calculate the amoun 
+	/**
+	 * Defines the variables 
 	 */
-	private void calculateSaved(int amount){
-	this.amount = amount;
-	}
+	public int amount, saved, counter;
 	
-	
-	
-	/*
-	 * saved the amount of money
-	 */
-	private int getSaved(){
-	return x;
-	}
-
-
-	/*
-	 * Return the Counter of Cigarrettes smoked 
+	/**
+	 *Constructs a cash register with no money in it
 	 */
 	
-	private int getCounter(){
-	return y;
+	
+	public CashRegister(){
+		saved = 0;
+		counter = 0;
+		amount = 0;	
+	
 	}
-
+	
+	/**
+	 * Calculate the saved money
+	 * @param amount
+	 */
+	
+	public void calculateSaved(int amount){
+	amount = saved + counter;
+	}
+	
+	/**
+	 * Calculate the change of the saved money
+	 * @return
+	 */
+	public int giveChange()
+	   {    
+	      int change = counter - saved;
+	      return change;
+	   }
+	
+	/**
+	 * it is return the saved money
+	 * @return
+	 */
+	public int getSaved(){
+		return saved;
+	}
+	
+	/**
+	 *It return the counter money
+	 * @return
+	 */
+	public int getCounter(){
+	return counter;
+	
+	}	
+	
 	
 }
