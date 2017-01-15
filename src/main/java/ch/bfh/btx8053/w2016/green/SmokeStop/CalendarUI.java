@@ -71,76 +71,76 @@ public class CalendarUI extends VerticalLayout implements View {
 		calEnd.roll(java.util.Calendar.DATE, -1);
 		calendar.setEndDate(calEnd.getTime());
 
-		// Add a short event today
-		GregorianCalendar start = new GregorianCalendar();
-		start.set(java.util.Calendar.HOUR, 14);
-		start.set(java.util.Calendar.MINUTE, 00);
-		start.set(java.util.Calendar.SECOND, 00);
-		GregorianCalendar end   = new GregorianCalendar();
-		end.set(java.util.Calendar.HOUR, 18);
-		end.set(java.util.Calendar.MINUTE, 00);
-		end.set(java.util.Calendar.SECOND, 00);
-		calendar.addEvent(new BasicEvent("Calendar study",
-				"Learning how to use Vaadin Calendar",
-				start.getTime(), end.getTime()));
-
-		// Add an all-day event
-		GregorianCalendar today = new GregorianCalendar();
-		BasicEvent dayEvent = new BasicEvent("All-day Long",
-				"This is the Day",
-				today.getTime(), today.getTime());
-		dayEvent.setAllDay(true);
-		calendar.addEvent(dayEvent);
-
-		// Add an all-week event
-		GregorianCalendar weekstart = new GregorianCalendar();
-		GregorianCalendar weekend   = new GregorianCalendar();
-		weekstart.setFirstDayOfWeek(java.util.Calendar.SUNDAY);
-		weekstart.set(java.util.Calendar.HOUR_OF_DAY, 0);
-		weekstart.set(java.util.Calendar.DAY_OF_WEEK,
-				java.util.Calendar.SUNDAY);
-		weekend.set(java.util.Calendar.HOUR_OF_DAY, 23);
-		weekend.set(java.util.Calendar.DAY_OF_WEEK,
-				java.util.Calendar.SATURDAY);
-		BasicEvent weekEvent = new BasicEvent("A long week",
-				"This is a long long week",
-				weekstart.getTime(), weekend.getTime());
-		//		        weekEvent.setAllDay(true);
-		calendar.addEvent(weekEvent);
-
-		// Handle clicks on dates
-		calendar.setHandler(new BasicDateClickHandler() {
-			public void dateClick(DateClickEvent event) {
-				Calendar cal = event.getComponent();
-
-				// Check if the current range is already one day long
-				long currentCalDateRange = cal.getEndDate().getTime() -
-						cal.getStartDate().getTime();
-
-				// From one-day view, zoom out to week view
-				if (currentCalDateRange <= DateConstants.DAYINMILLIS) {
-					// Change the date range to the current week
-					GregorianCalendar weekstart = new GregorianCalendar();
-					GregorianCalendar weekend   = new GregorianCalendar();
-					weekstart.setTime(event.getDate());
-					weekend.setTime(event.getDate());
-					weekstart.setFirstDayOfWeek(java.util.Calendar.SUNDAY);
-					weekstart.set(java.util.Calendar.HOUR_OF_DAY, 0);
-					weekstart.set(java.util.Calendar.DAY_OF_WEEK,
-							java.util.Calendar.SUNDAY);
-					weekend.set(java.util.Calendar.HOUR_OF_DAY, 23);
-					weekend.set(java.util.Calendar.DAY_OF_WEEK,
-							java.util.Calendar.SATURDAY);
-					cal.setStartDate(weekstart.getTime());
-					cal.setEndDate(weekend.getTime());
-
-					Notification.show("Custom zoom to week");
-				} else {
-					// Default behavior, change date range to one day
-					super.dateClick(event);
-				}
-			}
-		});       
+//		// Add a short event today
+//		GregorianCalendar start = new GregorianCalendar();
+//		start.set(java.util.Calendar.HOUR, 14);
+//		start.set(java.util.Calendar.MINUTE, 00);
+//		start.set(java.util.Calendar.SECOND, 00);
+//		GregorianCalendar end   = new GregorianCalendar();
+//		end.set(java.util.Calendar.HOUR, 18);
+//		end.set(java.util.Calendar.MINUTE, 00);
+//		end.set(java.util.Calendar.SECOND, 00);
+//		calendar.addEvent(new BasicEvent("Calendar study",
+//				"Learning how to use Vaadin Calendar",
+//				start.getTime(), end.getTime()));
+//
+//		// Add an all-day event
+//		GregorianCalendar today = new GregorianCalendar();
+//		BasicEvent dayEvent = new BasicEvent("All-day Long",
+//				"This is the Day",
+//				today.getTime(), today.getTime());
+//		dayEvent.setAllDay(true);
+//		calendar.addEvent(dayEvent);
+//
+//		// Add an all-week event
+//		GregorianCalendar weekstart = new GregorianCalendar();
+//		GregorianCalendar weekend   = new GregorianCalendar();
+//		weekstart.setFirstDayOfWeek(java.util.Calendar.SUNDAY);
+//		weekstart.set(java.util.Calendar.HOUR_OF_DAY, 0);
+//		weekstart.set(java.util.Calendar.DAY_OF_WEEK,
+//				java.util.Calendar.SUNDAY);
+//		weekend.set(java.util.Calendar.HOUR_OF_DAY, 23);
+//		weekend.set(java.util.Calendar.DAY_OF_WEEK,
+//				java.util.Calendar.SATURDAY);
+//		BasicEvent weekEvent = new BasicEvent("A long week",
+//				"This is a long long week",
+//				weekstart.getTime(), weekend.getTime());
+//		//		        weekEvent.setAllDay(true);
+//		calendar.addEvent(weekEvent);
+//
+//		// Handle clicks on dates
+//		calendar.setHandler(new BasicDateClickHandler() {
+//			public void dateClick(DateClickEvent event) {
+//				Calendar cal = event.getComponent();
+//
+//				// Check if the current range is already one day long
+//				long currentCalDateRange = cal.getEndDate().getTime() -
+//						cal.getStartDate().getTime();
+//
+//				// From one-day view, zoom out to week view
+//				if (currentCalDateRange <= DateConstants.DAYINMILLIS) {
+//					// Change the date range to the current week
+//					GregorianCalendar weekstart = new GregorianCalendar();
+//					GregorianCalendar weekend   = new GregorianCalendar();
+//					weekstart.setTime(event.getDate());
+//					weekend.setTime(event.getDate());
+//					weekstart.setFirstDayOfWeek(java.util.Calendar.SUNDAY);
+//					weekstart.set(java.util.Calendar.HOUR_OF_DAY, 0);
+//					weekstart.set(java.util.Calendar.DAY_OF_WEEK,
+//							java.util.Calendar.SUNDAY);
+//					weekend.set(java.util.Calendar.HOUR_OF_DAY, 23);
+//					weekend.set(java.util.Calendar.DAY_OF_WEEK,
+//							java.util.Calendar.SATURDAY);
+//					cal.setStartDate(weekstart.getTime());
+//					cal.setEndDate(weekend.getTime());
+//
+//					Notification.show("Custom zoom to week");
+//				} else {
+//					// Default behavior, change date range to one day
+//					super.dateClick(event);
+//				}
+//			}
+//		});       
 
 		layout.addComponent(calendar);
 
