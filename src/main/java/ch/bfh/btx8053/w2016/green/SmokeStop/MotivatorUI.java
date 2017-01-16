@@ -28,6 +28,9 @@ import com.vaadin.ui.themes.ValoTheme;
 
 public class MotivatorUI extends VerticalLayout implements View {
 
+	final static String WIDTH= "280";// screengrösse..
+	final static String HEIGHT= "570";//screengrösse..
+	
 	public MotivatorUI() {
 
 		final VerticalLayout layout = new VerticalLayout(); // Main layout
@@ -35,6 +38,7 @@ public class MotivatorUI extends VerticalLayout implements View {
 		// head bar
 		final HorizontalLayout hLayout1 = new HorizontalLayout();
 
+		// icon group
 		final CssLayout hLayoutIcons = new CssLayout();
 		hLayoutIcons.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
 
@@ -50,11 +54,9 @@ public class MotivatorUI extends VerticalLayout implements View {
 		bMotivator.addClickListener(e -> {
 			getUI().getNavigator().navigateTo(MainUI.MOTIVATOR);
 		});
-
 		hLayoutIcons.addComponents(bMotivator, bCalendar, bPerson);
 
 		final Label lTitle = new Label("SmokeStop");
-
 		hLayout1.addComponents(hLayoutIcons, lTitle);
 		hLayout1.setSpacing(true);
 
@@ -65,17 +67,11 @@ public class MotivatorUI extends VerticalLayout implements View {
 
 		// Saved money
 		final Label savedMoney = new Label();
-		savedMoney.setCaption("You have saved at least " + "153.20" + " CHF"); // the
-																				// number
-																				// should
-																				// come
-																				// from
-																				// the
-																				// Money
-																				// class
+		savedMoney.setCaption("You have saved at least " + "153.20" + " CHF"); // the number should come from the Money class
+
 
 		
-		
+
 		// Show uploaded file in this placeholder
 		final Embedded image = new Embedded("Uploaded Image");
 		image.setVisible(false);
@@ -94,7 +90,7 @@ public class MotivatorUI extends VerticalLayout implements View {
 					fos = new FileOutputStream(file);
 				} catch (final java.io.FileNotFoundException e) {
 					new Notification("Could not open file<br/>", e.getMessage(), Notification.Type.ERROR_MESSAGE)
-							.show(Page.getCurrent());
+					.show(Page.getCurrent());
 					return null;
 				}
 				return fos; // Return the output stream to write to
@@ -105,8 +101,7 @@ public class MotivatorUI extends VerticalLayout implements View {
 				image.setVisible(true);
 				image.setSource(new FileResource(file));
 			}
-		}
-		;
+		};
 		ImageUploader receiver = new ImageUploader();
 
 		// Create the upload with a caption and set receiver later
@@ -118,23 +113,23 @@ public class MotivatorUI extends VerticalLayout implements View {
 		Layout panelContent = new VerticalLayout();
 		panelContent.addComponents(upload, image);
 		panel.setContent(panelContent);
-		
-		
-		
+
+
+
 
 		// Goal buttons
 		final HorizontalLayout hLayoutButtons = new HorizontalLayout();
-
 		final Label goalText = new Label();
 
 		final Button bAchieved = new Button("Goal achieved");
-
+		bAchieved.addStyleName("green");//funktioniert nicht
 		bAchieved.addClickListener(e -> {
 			layout.addComponent(new Label("Congratulation, you got it!"));
 		});
 
 		final Button bfaild = new Button("Goal faild");
-		bfaild.addClickListener(e -> {
+		bfaild.addStyleName("red");//funktioniert nicht
+		bfaild.addClickListener( e -> {
 			layout.addComponent(new Label("Damn, you miss! Don't give up"));
 		});
 
