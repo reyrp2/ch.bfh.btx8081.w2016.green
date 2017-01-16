@@ -11,6 +11,7 @@ import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Link;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.VerticalLayout;
@@ -18,6 +19,10 @@ import com.vaadin.ui.themes.ValoTheme;
 
 @Theme("mytheme")
 public class LoginUI extends VerticalLayout implements View {
+
+	private TextField userName;
+	private PasswordField password;
+	private String verify = null;
 
 	public LoginUI(){
 
@@ -30,25 +35,44 @@ public class LoginUI extends VerticalLayout implements View {
 		hLayout1.addComponents(lTitle); 	
 		hLayout1.setSpacing(true);
 
-		final TextField Benutzername = new TextField();
-		Benutzername.setCaption("Benutzername");
+		//Username field
+		userName = new TextField();
+		userName.setCaption("Benutzername");
 
-		final PasswordField Passwort = new PasswordField();
-		Passwort.setCaption("Passwort");
-		
+		//Password field
+		password = new PasswordField();
+		password.setCaption("Passwort");
+
+		//Login button with click event
 		final Button loginButton = new Button("Login");
 		loginButton.addClickListener( e -> {
-			getUI().getNavigator().navigateTo(MainUI.PERSON);
+
+			final String myLogin = userName.getValue();
+			final String myPassword = password.getValue(); 
+
+//			loginAuthorisation loginAuth = new loginAuthorisation(); //DB-Klasse für autorisierung
+//			loginAuth.CheckAcces(myLogin, myPassword);
+
+//			verify = loginAuth.getResult();
+
+			if (verify == "true"){
+				getUI().getNavigator().navigateTo(MainUI.MOTIVATOR);
+			}
+			else { Notification.show("Login incorrect, try it again.");
+//			System.out.println(verify);
+			getUI().getNavigator().navigateTo(MainUI.MOTIVATOR);//löschen wenn mit DB verbunden
+			}
 		});
-		
+
+
+		//Create new Account button with click event
 		final Button createAccountLink = new Button("Create new Account");
-		createAccountLink.setStyleName("link");
+		createAccountLink.setStyleName("link"); //funktioniert nicht!!!!
 		createAccountLink.addClickListener( e -> {
 			getUI().getNavigator().navigateTo(MainUI.ACCOUNT);
 		});
-		//funktioniert nicht!!!!
-		
-		layout.addComponents(hLayout1,Benutzername,Passwort,loginButton,createAccountLink);
+
+		layout.addComponents(hLayout1,userName,password,loginButton,createAccountLink);
 		layout.setMargin(true);
 		layout.setSpacing(true);
 		addComponent(layout);
