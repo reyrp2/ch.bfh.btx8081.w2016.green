@@ -2,16 +2,12 @@ package ch.bfh.btx8053.w2016.green.SmokeStop;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.server.ExternalResource;
-import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.Link;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
-public class createAccountUI extends UI implements View {
+public class createAccountUI extends VerticalLayout implements View {
 
 	public createAccountUI(){
 
@@ -50,23 +46,18 @@ public class createAccountUI extends UI implements View {
 		loginLink.addClickListener( e -> {
 			getUI().getNavigator().navigateTo(MainUI.LOGIN);
 		});//funktioniert nicht!!!
-		
+
 		layout.addComponents(newAccount, fieldName, fieldFirstName, fieldMail, fieldPW, fieldPWAgain, createAccount, loginLink);
 		layout.setSizeUndefined();
-		//layout.setSizeFull(); //Layout passt sich der BildschirmgrÃ¶sse an
+		//layout.setSizeFull(); //Layout passt sich der Bildschirmgrösse an
 		layout.setMargin(true);
 		layout.setSpacing(true); 
-		setContent(layout);
+		addComponent(layout);
 	}
 
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	protected void init(VaadinRequest request) {
 		// TODO Auto-generated method stub
 	}
 }
