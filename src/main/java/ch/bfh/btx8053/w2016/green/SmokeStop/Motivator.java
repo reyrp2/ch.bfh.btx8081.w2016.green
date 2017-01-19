@@ -3,6 +3,7 @@ package ch.bfh.btx8053.w2016.green.SmokeStop;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
 
@@ -34,6 +35,11 @@ public class Motivator{
 	 */
 	public void setMotivationText(String MotivationText) {
 		this.MotivationText = MotivationText;
+	}
+	
+	public String getMotivationText(String UserName) throws SQLException {
+		connectToDB c =new connectToDB();	
+		return c.readMotivationTxt(UserName);
 	}
 	
 	/**
