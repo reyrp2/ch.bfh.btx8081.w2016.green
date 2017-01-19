@@ -1,5 +1,7 @@
 package ch.bfh.btx8053.w2016.green.SmokeStop;
 
+import java.sql.SQLException;
+
 import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
@@ -18,12 +20,14 @@ import com.vaadin.ui.VerticalLayout;
  * <p>
  * The UI is initialized using {@link #init(VaadinRequest)}. This method is intended to be 
  * overridden to add component to the user interface and initialize non-component functionality.
+ * 
+ * @author Rey
  */
 @Theme("mytheme")
 public class MainUI extends UI {
 
 	public Navigator navigator;
-	
+
 	//Views
 	public static final String LOGIN = "login";
 	public static final String ACCOUNT = "account";
@@ -38,18 +42,22 @@ public class MainUI extends UI {
 
 		ComponentContainerViewDisplay viewDisplay = new ComponentContainerViewDisplay(layout);
 		navigator = new Navigator(UI.getCurrent(),viewDisplay);
-		
+
 		navigator.addView("", new LoginUI());//start-page
 		navigator.addView(LOGIN, new LoginUI());
 		navigator.addView(ACCOUNT, new createAccountUI());
 		navigator.addView(CALENDAR, new CalendarUI());
 		navigator.addView(PERSON, new PersonUI());
-		navigator.addView(MOTIVATOR, new MotivatorUI());
+		try {
+			navigator.addView(MOTIVATOR, new MotivatorUI());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		layout.setMargin(true);
 		layout.setSpacing(true);
 		setContent(layout);
-
 	}
 
 
