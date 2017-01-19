@@ -6,133 +6,137 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 
 /**
- * This class connects to the data base and offers methods to interact with it
- * @author grgic
- *
+ * This class provides access to the data base and offers methods to interact
+ * with it
+ * 
+ * @author Pero Grgic
  */
 public class connectToDB {
 
-	public static final String DB_URL = "corpus.bfh.ch:55783";
-	public static final String DB_NAME = "SWE_2026_3";
+	public static final String DB_URL = "jdbc:jtds:sqlserver://corpus.bfh.ch:55783";
+	public static final String DB_NAME = ";DatabaseName=SWE_2026_3";
 	private static final String USER_NAME = "SWE_2016_3_user";
 	private static final String USER_PASS = "SWE_2016_3_$u";
-	private Connection connection = null;
-	
-	//creates the data base URL
-		private String DB_URL() {
-			return "jdbc:jtds:sqlserver://" + DB_URL + ";DatabaseName=" + DB_NAME;
-		}
 
-	public connectToDB() {
-		connectDB();
-	}
-	
+	static Connection c = null;
+
 	/**
-	 * Connects to the database
+	 * Connects to the data base
 	 */
-	private void connectDB(){
-		// 1 the translator, load the driver - required for all drivers before
-		// version 4.0
+	private static void connectDB() {
+
 		try {
 			Class.forName("net.sourceforge.jtds.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e1) {
 			System.err.println("Couldn't load driver");
 		}
 
 		try {
-			connection = DriverManager.getConnection(DB_URL(), USER_NAME, USER_PASS);
+			c = DriverManager.getConnection(DB_URL, USER_NAME, USER_PASS);
+			System.out.println("Connection to data base successful!");
 		} catch (SQLException e) {
-			System.err.println("Connection to data base failed!");
+			System.err.println("Connection to data base failed");
 		}
-		
 
-		System.out.println("Connection to data base successful!");
 	}
 
 	/**
-	 * Cuts the connection to the data base
-	 * @throws SQLException
+	 * Cuts connection to the data base
 	 */
-	private void disconnectDBMS() throws SQLException {
-		if (connection != null) {
-			connection.close();
-			connection = null;
+	private static void disconnectDB() {
+		if (c != null) {
+			try {
+				c.close();
+			} catch (SQLException e) {
+				System.err.println("Couldn't disconnect!");
+			}
+			System.out.println("Disconnected!");
+			c = null;
 		}
 	}
 
-	public String readMotivationTxt(String userName) throws SQLException {
+	/**
+	 * Gets the motivation text of the given user name
+	 * 
+	 * @param userName
+	 *            user name which motivation text will be returned
+	 */
+	public static String readMotivationTxt(String userName) {
+		connectDB();
 		String MotiTxt = null;
+		String query = "SELECT MotivationTxt FROM Motivator WHERE UserName = '" + userName + "';";
 		try {
-			String query = "SELECT MotivationTxt FROM Motivator WHERE UserName = '" + userName+"';";
-			Statement st = connection.createStatement();
+			Statement st = c.createStatement();
 			ResultSet rs = st.executeQuery(query);
-			while (rs.next()){
-			MotiTxt = rs.getString("MotivationTxt");
+			while (rs.next()) {
+				MotiTxt = rs.getString("MotivationTxt");
 			}
 			st.close();
 			rs.close();
 		} catch (SQLException e) {
-			System.err.println("Couldn't execute query!");
-		}	
-		disconnectDBMS();
+			System.err.println("Couldn't read motivation text!");
+		}
+		disconnectDB();
 		return MotiTxt;
+	}
+
+	/**
+	 * Inserts motivation text into the data base
+	 * 
+	 * @param MotivationTxt
+	 *            text that will be inserted
+	 * @param userName
+	 *            user where the text will be inserted
+	 */
+	public static void writeMotivationText(String MotivationTxt, String userName) {
+		connectDB();
+
+		String query = "UPDATE Motivator SET MotivationTxt = '" + MotivationTxt + "' WHERE UserName = '" + userName
+				+ "';";
+
+		try {
+			Statement st = c.createStatement();
+			st.executeUpdate(query);
+			st.close();
+		} catch (SQLException e) {
+			System.err.println("Couldn't insert motivation text!");
 		}
-	
-	public void readGoals() throws SQLException {
-		// 3. creating statement object
-		Statement statement = connection.createStatement();
+		disconnectDB();
+	}
 
-		// 4. executing the query
-
-		String query = "SELECT dbo.BigGoal, dbo.DailyGoal " + "FROM " + DB_NAME + ".dbo.Goals "
-				+ "ORDER BY BigGoal, DailyGoal;";
-
-		ResultSet rs = statement.executeQuery(query);
-
-		System.out.println("readGoals()");
-		System.out.println("BigGoal, DailyGoal");
-		System.out.println("---------\t---------------");
-
-		// displaying the result set, one tuple per line
-		while (rs.next()) {
-			System.out.println(String.format("%d\t%s, %s", rs.getDate(1), rs.getInt(2)));
+	/**
+	 * Checks if the user name and the password are correct
+	 * 
+	 * @param userName
+	 *            user name which will be checked
+	 * @param userPass
+	 *            password which will be checked
+	 * @return returns true if user name and password are correct else false
+	 */
+	public static boolean checkAuthen(String userName, String userPass) {
+		connectDB();
+		boolean check = false;
+		String query = "SELECT UserName, Password FROM Person WHERE UserName = '" + userName + "' AND Password = '"
+				+ userPass + "';";
+		try {
+			Statement st = c.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				String Username = rs.getString("UserName");
+				String PW = rs.getString("Password");
+				if (userName.equals(Username) && userPass.equals(PW)) {
+					check = true;
+				}
+			}
+			st.close();
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-
-		// close result set and statement
-		rs.close();
-		statement.close();
+		disconnectDB();
+		return check;
 	}
-	public void updateTable(String UserName, Date newBigGaol, int newDailyGoal) throws SQLException {
-		// creating statement object
-		Statement statement = connection.createStatement();
-
-		// executing the query
-		String query = " UPDATE TABLE dob.Goals SET BigGoal = newBigGoal;";
-	
-		ResultSet rs = statement.executeQuery(query);
-
-		// close result set and statement
-		rs.close();
-		statement.close();
-	}
-/*
- * Inserts new data into the DB table.
- */
-	public void insertNewValue(Date newBigGoal, int newDailyGoal) throws SQLException {
-		// creating statement object
-		Statement statement = connection.createStatement();
-
-		// executing the query
-		String query = " INSERT INTO   dob.Goals VALUES(newBigGoal,newDailyGoal);";
-
-		ResultSet rs = statement.executeQuery(query);
-		// close result set and statement
-		rs.close();
-		statement.close();
-	}
-
 
 }
