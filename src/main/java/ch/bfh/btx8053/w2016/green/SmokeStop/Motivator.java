@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 
 public class Motivator{
 	
+	private String UserName;
 	private String MotivationText;
 	private BufferedImage img;
 	
@@ -17,8 +18,11 @@ public class Motivator{
 	 * motivation text or load their motivation picture
 	 * @param motivationText the text which should motivate the user
 	 * @param imagePath path of the image which should motivate the user
+	 * @throws SQLException 
 	 */
-	public Motivator (){
+	public Motivator (String userName) throws SQLException{
+		this.UserName = userName;
+		getMotivationText(userName);
 	}
 
 	/**
@@ -30,9 +34,9 @@ public class Motivator{
 		this.MotivationText = MotivationText;
 	}
 	
-	public String getMotivationText(String UserName) throws SQLException {
+	private String getMotivationText(String UserName) throws SQLException {
 		connectToDB c =new connectToDB();	
-		return c.readMotivationTxt(UserName);
+		return MotivationText = c.readMotivationTxt(UserName);
 	}
 	
 	/**
