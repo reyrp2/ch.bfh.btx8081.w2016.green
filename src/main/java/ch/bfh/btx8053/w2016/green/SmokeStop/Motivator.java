@@ -18,14 +18,7 @@ public class Motivator{
 	 * @param motivationText the text which should motivate the user
 	 * @param imagePath path of the image which should motivate the user
 	 */
-	public Motivator (String motivationText, String imagePath){
-		try{
-			img = ImageIO.read(new File(imagePath));
-		} catch (IOException e){
-			e.printStackTrace();
-		}
-		
-		this.MotivationText = motivationText;
+	public Motivator (){
 	}
 
 	/**
