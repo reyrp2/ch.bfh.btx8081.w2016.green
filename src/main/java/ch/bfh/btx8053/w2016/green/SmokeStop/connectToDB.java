@@ -21,6 +21,10 @@ public class connectToDB {
 	private static final String USER_PASS = "SWE_2016_3_$u";
 
 	static Connection c = null;
+	
+	public connectToDB(){
+		connectDB();
+	}
 
 	/**
 	 * Connects to the data base
@@ -63,7 +67,7 @@ public class connectToDB {
 	 * @param userName
 	 *            user name which motivation text will be returned
 	 */
-	public static String readMotivationTxt(String userName) {
+	public String readMotivationTxt(String userName) {
 		connectDB();
 		String MotiTxt = null;
 		String query = "SELECT MotivationTxt FROM Motivator WHERE UserName = '" + userName + "';";
@@ -90,7 +94,7 @@ public class connectToDB {
 	 * @param userName
 	 *            user where the text will be inserted
 	 */
-	public static void writeMotivationText(String MotivationTxt, String userName) {
+	public void writeMotivationText(String MotivationTxt, String userName) {
 		connectDB();
 
 		String query = "UPDATE Motivator SET MotivationTxt = '" + MotivationTxt + "' WHERE UserName = '" + userName
@@ -115,7 +119,7 @@ public class connectToDB {
 	 *            password which will be checked
 	 * @return returns true if user name and password are correct else false
 	 */
-	public static boolean checkAuthen(String userName, String userPass) {
+	public boolean checkAuthen(String userName, String userPass) {
 		connectDB();
 		boolean check = false;
 		String query = "SELECT UserName, Password FROM Person WHERE UserName = '" + userName + "' AND Password = '"
