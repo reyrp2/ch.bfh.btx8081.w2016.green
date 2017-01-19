@@ -1,6 +1,7 @@
 package ch.bfh.btx8053.w2016.green.SmokeStop;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,26 +10,50 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
+/**
+ * This class connects to the data base and offers methods to interact with it
+ * @author grgic
+ *
+ */
 public class connectToDB {
 
-	public static final String DBMS_URL = "corpus.bfh.ch:55783";
+	public static final String DB_URL = "corpus.bfh.ch:55783";
 	public static final String DB_NAME = "SWE_2026_3";
 	private static final String USER_NAME = "SWE_2016_3_user";
 	private static final String USER_PASS = "SWE_2016_3_$u";
 	private Connection connection = null;
-	// insert, select, update delete
+	
+	//creates the data base URL
+		private String DB_URL() {
+			return "jdbc:jtds:sqlserver://" + DB_URL + ";DatabaseName=" + DB_NAME;
+		}
 
-	private void connectDBMS() throws ClassNotFoundException, SQLException {
+	/**
+	 * Connects to the database
+	 */
+	private void connectDBMS(){
 		// 1 the translator, load the driver - required for all drivers before
 		// version 4.0
-		Class.forName("net.sourceforge.jtds.jdbc.Driver");
+		try {
+			Class.forName("net.sourceforge.jtds.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			System.err.println("Couldn't load driver");
+		}
 
-		connection = DriverManager.getConnection(getJdbcUrl(), USER_NAME, USER_PASS);
+		try {
+			connection = DriverManager.getConnection(DB_URL(), USER_NAME, USER_PASS);
+		} catch (SQLException e) {
+			System.err.println("Connection to data base failed!");
+		}
+		
 
-		System.out.println("Connection to MS SQL DB successful!");
-
+		System.out.println("Connection to data base successful!");
 	}
 
+	/**
+	 * Cuts the connection to the data base
+	 * @throws SQLException
+	 */
 	public void disconnectDBMS() throws SQLException {
 		if (connection != null) {
 			connection.close();
@@ -36,10 +61,23 @@ public class connectToDB {
 		}
 	}
 
-	private String getJdbcUrl() {
-		return "jdbc:jtds:sqlserver://" + DBMS_URL + ";DatabaseName=" + DB_NAME;
-	}
-
+	public String readMotivationTxt(String userName) throws SQLException {
+		String MotiTxt = null;
+		try {
+			String query = "SELECT MotivationTxt FROM Motivator WHERE UserName = '" + userName+"';";
+			Statement st = connection.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()){
+			MotiTxt = rs.getString("MotivationTxt");
+			}
+			st.close();
+			rs.close();
+		} catch (SQLException e) {
+			System.err.println("Couldn't execute query!");
+		}	
+		return MotiTxt;
+		}
+	
 	public void readGoals() throws SQLException {
 		// 3. creating statement object
 		Statement statement = connection.createStatement();
