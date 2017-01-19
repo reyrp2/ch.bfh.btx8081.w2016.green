@@ -6,9 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 
 /**
  * This class connects to the data base and offers methods to interact with it
@@ -28,10 +26,14 @@ public class connectToDB {
 			return "jdbc:jtds:sqlserver://" + DB_URL + ";DatabaseName=" + DB_NAME;
 		}
 
+	public connectToDB() {
+		connectDB();
+	}
+	
 	/**
 	 * Connects to the database
 	 */
-	private void connectDBMS(){
+	private void connectDB(){
 		// 1 the translator, load the driver - required for all drivers before
 		// version 4.0
 		try {
@@ -54,7 +56,7 @@ public class connectToDB {
 	 * Cuts the connection to the data base
 	 * @throws SQLException
 	 */
-	public void disconnectDBMS() throws SQLException {
+	private void disconnectDBMS() throws SQLException {
 		if (connection != null) {
 			connection.close();
 			connection = null;
@@ -75,6 +77,7 @@ public class connectToDB {
 		} catch (SQLException e) {
 			System.err.println("Couldn't execute query!");
 		}	
+		disconnectDBMS();
 		return MotiTxt;
 		}
 	
